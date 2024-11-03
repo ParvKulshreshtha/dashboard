@@ -35,7 +35,7 @@ export const RevenueChart:FC<ComponentInterface> = ({darkTheme})=> {
   return (
     <ChartContainer config={chartConfig} className=" h-[232px]">
         <LineChart
-        // accessibilityLayer
+        accessibilityLayer
         data={chartData}
         >
         <XAxis

@@ -21,7 +21,7 @@ const App:FC = () => {
                     <LeftSidebar openBar={leftSidebarOpen} darkTheme={darkTheme}/>
                     <main className={`flex-grow p-6 mt-24 main-transition  ${leftSidebarOpen ? "ml-52" : "ml-0"} ${rightSidebarOpen ? "mr-72" : "mr-0"}`}>
                         <Routes>
-                            <Route path="/" element={<ECommDash darkTheme={darkTheme} />} />
+                            <Route path="/" element={<OrderList darkTheme={darkTheme} />} />
                             <Route path="/about" element={<About />} />
                         </Routes>
                     </main>

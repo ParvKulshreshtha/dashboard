@@ -3,6 +3,7 @@ import icon_rise from "@/assets/icon-rise.png";
 import { Component } from "./ProjectionChart";
 import { RevenueChart } from "./RevenueChart";
 import { FC } from "react";
+import Map from "./Map";
 interface ComponentInterface {
     darkTheme:boolean;
 }
@@ -80,9 +81,9 @@ const ECommDash:FC<ComponentInterface> = ({darkTheme}) => {
           <div>
             Revenue by Location
           </div>
-          {/* <div className="map h-full w-full overflow-hidden border-black border-2 dark:border-white/5">
-
-          </div> */}
+          <div className="map ">
+            <Map />
+          </div>
         </div>
 
         {/* Third row */}

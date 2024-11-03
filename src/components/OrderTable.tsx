@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import {
   Table,
   TableBody,
@@ -17,7 +17,13 @@ import icon_not_selected from "../assets/icon-not-selected.png";
 import Dot from "./ui/Dot";
 import { orders } from "@/data/order";
 
-export function OrderTable() {
+
+interface ComponentInterface {
+  darkTheme:boolean;
+}
+
+
+export const OrderTable:FC<ComponentInterface> = ({darkTheme}) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [selectedRows, setSelectedRows] = useState<{ [key: string]: boolean }>({});
   const [selectAll, setSelectAll] = useState<boolean>(false);
@@ -57,7 +63,7 @@ export function OrderTable() {
     <div>
       <Table className="text-xs">
         <TableHeader>
-          <TableRowHeader className="text-black40">
+          <TableRowHeader className="text-black40 dark:text-white/40">
             <TableHead className="flex justify-center items-center px-1 py-3">
               <button onClick={handleSelectAll}>
                 <img
@@ -109,9 +115,9 @@ export function OrderTable() {
                 <TableCell className="px-2 py-[1px]">
                   <div
                     className="flex items-center"
-                    style={{ color: statusMap[order.status].color }}
+                    style={{ color: darkTheme?statusMap[order.status].dark_color:statusMap[order.status].color }}
                   >
-                    <Dot color={statusMap[order.status].color} />
+                    <Dot color={darkTheme?statusMap[order.status].dark_color:statusMap[order.status].color} />
                     {statusMap[order.status].name}
                   </div>
                 </TableCell>
@@ -135,7 +141,7 @@ export function OrderTable() {
               key={page}
               onClick={() => handlePageChange(page + 1)}
               className={`w-7 h-7 flex items-center justify-center ${
-                currentPage === page + 1 ? "bg-black05" : ""
+                currentPage === page + 1 ? "bg-black05 dark:bg-white/10" : ""
               } rounded-lg transition duration-150 ease-in-out`}
             >
               {page + 1}

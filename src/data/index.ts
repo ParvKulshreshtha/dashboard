@@ -75,12 +75,13 @@ export const notifIcon:NotificationItemInterface = {
 type Status = {
     color: string;
     name: string;
+    dark_color: string;
   };
   
   export const statusMap: { [key: number]: Status } = {
-    1: { color: '#8A8CD9', name: 'In Progress' },
-    2: { color: '#4AA785', name: 'Completed' },
-    3: { color: '#59A8D4', name: 'Pending' },
-    4: { color: '#FFC555', name: 'Approved' },
-    5: { color: '#1C1C1C66', name: 'Rejected' },
+    1: { color: '#8A8CD9', dark_color: '#8A8CD9', name: 'In Progress' },
+    2: { color: '#4AA785', dark_color: '#4AA785', name: 'Completed' },
+    3: { color: '#59A8D4', dark_color: '#59A8D4', name: 'Pending' },
+    4: { color: '#FFC555', dark_color: '#FFC555', name: 'Approved' },
+    5: { color: '#1C1C1C66', dark_color: '#FFFFFF66' ,name: 'Rejected' },
   };
