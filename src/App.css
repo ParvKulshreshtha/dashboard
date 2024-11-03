@@ -1,0 +1,61 @@
+.transition-header {
+    transition: left 0.3s ease-in-out, right 0.3s ease-in-out;
+  }
+
+.transition-sidebar {
+    transition: width 0.3s ease, visibility 0.3s ease;
+  }
+
+.sidebar-transition {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  
+.main-transition {
+    transition: margin 0.3s ease;
+  }
+  
+.sidebar-transition.open {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* The scrollbar itself */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the vertical scrollbar */
+    height: 12px; /* Height of the horizontal scrollbar */
+}
+
+/* Track (the area the scrollbar slides within) */
+::-webkit-scrollbar-track {
+    border-radius: 10px; /* Round edges */
+}
+
+/* Handle (the draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+    border-radius: 10px; /* Round edges */
+}
+
+html {
+  font-family: system-ui, sans-serif;
+  font-size: 1.25rem;
+}
+
+body {
+  margin: 0;
+}
+
+svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+path {
+  fill: #2a354d;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
