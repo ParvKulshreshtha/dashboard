@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import {  FC, useState } from "react";
 import userAvatar from "../assets/avatar-user.png";
 import sidebar_active from "../assets/sidebar-active-tab.png";
 import sidebar_default from "../assets/sidebar-default.png";
@@ -18,9 +18,7 @@ import Dot from "./ui/Dot";
 import { useSelector } from "react-redux";
 
 interface ComponentInterface {
-    openBar: boolean;
-    setOpenBar: Dispatch<SetStateAction<boolean>>;
-}
+    openBar: boolean;}
 
 interface MenuItem {
     name: string;
@@ -30,7 +28,7 @@ interface MenuItem {
     subItems: {
         name: string;
         active: boolean;
-    }[]
+    }[];
 }
 
 interface MenuItems {
@@ -51,9 +49,8 @@ const menuItems: MenuItems = {
     ]
 };
 
-const LeftSidebar: FC<ComponentInterface> = ({ openBar, setOpenBar }) => {
+const LeftSidebar: FC<ComponentInterface> = ({ openBar }) => {
     const [expandedItems, setExpandedItems] = useState<{ [key: string]: boolean }>({});
-
     const darkTheme = useSelector((state: any) => state.darkTheme);
 
     const handleItemClick = (category: string, item: MenuItem) => {

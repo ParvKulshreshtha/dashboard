@@ -26,7 +26,7 @@ const App: FC = () => {
           rightSidebarOpen={rightSidebarOpen}
         />
         <div className="flex flex-grow">
-          <LeftSidebar openBar={leftSidebarOpen} setOpenBar={setLeftSidebarOpen} />
+          <LeftSidebar openBar={leftSidebarOpen} />
           <main className={`flex-grow p-6 mt-24 main-transition ${leftSidebarOpen ? 'ml-52' : 'ml-0'} ${rightSidebarOpen ? 'mr-72' : 'mr-0'}`}>
             <button onClick={handleButtonClick} className="px-2">
               (Click here To go to order page)
