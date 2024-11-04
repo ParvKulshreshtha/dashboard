@@ -58,7 +58,7 @@ const TableRowHeader = React.forwardRef<
   <tr
     ref={ref}
     className={cn(
-      "border-b-black10 border-b py-2",
+      "border-b-black10 border-b dark:border-b-white/10 py-2",
       className
     )}
     {...props}

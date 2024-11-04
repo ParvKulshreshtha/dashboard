@@ -27,7 +27,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function Component() {
+export function ProjectionChart() {
   return (
     <div>
       <ChartContainer config={chartConfig} className="h-[160px] w-full">

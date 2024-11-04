@@ -6,10 +6,7 @@ import {
   ChartContainer,
 } from "@/components/ui/chart"
 import { FC } from "react"
-
-interface ComponentInterface {
-    darkTheme:boolean;
-}
+import { useSelector } from "react-redux"
 
 const chartData = [
   { month: "January", current: 15, previous: 10 },
@@ -31,7 +28,9 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export const RevenueChart:FC<ComponentInterface> = ({darkTheme})=> {
+export const RevenueChart:FC = ()=> {
+  const darkTheme = useSelector((state: any) => state.darkTheme);
+
   return (
     <ChartContainer config={chartConfig} className=" h-[232px]">
         <LineChart

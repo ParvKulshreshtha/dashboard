@@ -85,3 +85,44 @@ type Status = {
     4: { color: '#FFC555', dark_color: '#FFC555', name: 'Approved' },
     5: { color: '#1C1C1C66', dark_color: '#FFFFFF66' ,name: 'Rejected' },
   };
+
+  interface Product {
+    id:number;
+    product: string;
+    quantity: number;
+    amount: number;
+  }
+  
+  export const products: Product[] = [
+    {
+      id:1,
+      product: "ASOS Ridley High Waist",
+      quantity: 82,
+      amount: 79.49
+    },
+    {
+      id:2,
+      product: "Marco Lightweight Shirt",
+      quantity: 37,
+      amount: 120.79
+    },
+    {
+      id:3,
+      product: "Half Sleeve Shirt",
+      quantity: 54,
+      amount: 20.00
+    },
+    {
+      id:4,
+      product: "Lightweight Jacket",
+      quantity: 19,
+      amount: 89.67
+    },
+    {
+      id:5,
+      product: "Marco Shoes",
+      quantity: 70,
+      amount: 12.89
+    }
+  ];
+  
