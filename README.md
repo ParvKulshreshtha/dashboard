@@ -1,3 +1,5 @@
+**Deployed Site:** https://dashboard-parv.netlify.app/
+
 **1. Setup and run Locally**
 
 **Prerequisites**
@@ -46,5 +48,13 @@ Ensure all dependencies are correctly installed. If you encounter issues, try de
 
 **react-roter**: React Router is employed for client-side routing to manage navigation within the application. It provides a robust solution for handling dynamic routing, nested routes, and route-based code splitting, enhancing the overall user experience.
 
+**3. Challenges Faced:**
 
+**Design Challenges:** Ensuring the application was fully responsive and compatible with dark mode. tailwind and redux helped overcome this challenge.
+
+**Dependency Issues:** Finding third-party libraries in case of charts, tables, and maps that would help us build pixel-perfect UI was difficult.
+
+**3. Changes made**
+
+**built a temporary button on main screen that would lead us to orderlist component**
 
