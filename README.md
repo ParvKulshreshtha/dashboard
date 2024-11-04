@@ -27,11 +27,23 @@ Ensure all dependencies are correctly installed. If you encounter issues, try de
 **2. Design Decisions**
 
 **typescrip:** TypeScript was chosen to enhance code quality and maintainability by providing static typing, which helps catch errors early during development. This also improves the overall developer experience and makes the codebase easier to navigate and refactor. 
+
+
 **Redux:** Redux is used for state management, particularly for maintaining the dark theme state, which needs to be accessed across multiple components. 
+
+
 **tailwind:** Tailwind CSS was selected for styling the application due to its utility-first approach. This allows for rapid development of responsive and customizable UI components without writing custom CSS, leading to a more streamlined and maintainable codebase. 
+
+
 **shadcn:** The shadcn library is used for advanced UI components like tables and breadcrumbs
+
+
 **React-simple-maps:** React-simple-maps is used for the map component
+
+
 **recharts:** Recharts is utilized for creating line and bar charts. This library was chosen for its ease of use, rich feature set, and excellent integration with React, allowing for the creation of interactive and visually appealing charts.
+
+
 **react-roter**: React Router is employed for client-side routing to manage navigation within the application. It provides a robust solution for handling dynamic routing, nested routes, and route-based code splitting, enhancing the overall user experience.
 
 
