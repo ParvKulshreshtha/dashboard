@@ -8,7 +8,7 @@ import Header from './components/Header';
 import ECommDash from './components/ECommDash';
 
 const App: FC = () => {
-  const [leftSidebarOpen, setLeftSidebarOpen] = useState(true);
+  const [leftSidebarOpen, setLeftSidebarOpen] = useState(window.screen.availWidth>1120);
   const [rightSidebarOpen, setRightSidebarOpen] = useState(false);
   const [element, setElement] = useState(1);
 
@@ -28,13 +28,14 @@ const App: FC = () => {
         />
         <div className="flex flex-grow">
           <LeftSidebar openBar={leftSidebarOpen} location = {location} />
-          <main className={`flex-grow p-6 mt-24 main-transition ${leftSidebarOpen ? 'ml-52' : 'ml-0'} ${rightSidebarOpen ? 'mr-72' : 'mr-0'}`}>
+          <main className={`${(leftSidebarOpen || rightSidebarOpen) && "hidden"} sm:block flex-grow p-6 mt-24 main-transition ${leftSidebarOpen ? 'ml-52' : 'ml-0'} ${rightSidebarOpen ? 'mr-72' : 'mr-0'}`}>
             <button onClick={handleButtonClick} className="px-2">
               (Click here To go to order page)
             </button>
             <Routes>
             <Route path="/" element={<Navigate to="/Dashboard/Default" replace/>} /> 
               {element ===1 ?<Route path="/Dashboard/Default" element={<ECommDash />} /> : <Route path="/Dashboard/Default" element={<OrderList/>} />}
+            <Route path="*" element={<div>No Page Found</div>} /> 
             </Routes>
           </main>
           <RightSidebar rightSidebarOpen={rightSidebarOpen} setRightSidebarOpen={setRightSidebarOpen} />
