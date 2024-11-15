@@ -16,9 +16,12 @@ import icon_dark_closedArrow from "../assets/icon-dark-closedarrow.png";
 import icon_dark_openedArrow from "../assets/icon-dark-openedarrow.png";
 import Dot from "./ui/Dot";
 import { useSelector } from "react-redux";
+import { Link, Location, NavigateFunction, useNavigate } from "react-router-dom";
 
 interface ComponentInterface {
-    openBar: boolean;}
+    openBar: boolean;
+    location:Location;
+}
 
 interface MenuItem {
     name: string;
@@ -45,13 +48,17 @@ const menuItems: MenuItems = {
     Pages: [
         { name: "eCommerce", icon: sidebar_ecom, darkIcon: sidebar_dark_ecom, active: false, subItems: [{ name: "eCommerce Dashboard", active: false }] },
         { name: "Projects", icon: sidebar_projects, darkIcon: sidebar_dark_projects, active: false, subItems: [{ name: "Projects Dashboard", active: false }] },
-        { name: "Courses", icon: sidebar_courses, darkIcon: sidebar_dark_courses, active: false, subItems: [{ name: "Courses Dashboard", active: false }] },
+        { name: "Courses", icon: sidebar_courses, darkIcon: sidebar_dark_courses, active: false, subItems: [{ name: "Courses Dashboard", active: false },{name:"Course Insights", active:false}] },
     ]
 };
 
-const LeftSidebar: FC<ComponentInterface> = ({ openBar }) => {
+const LeftSidebar: FC<ComponentInterface> = ({ openBar, location }) => {
     const [expandedItems, setExpandedItems] = useState<{ [key: string]: boolean }>({});
     const darkTheme = useSelector((state: any) => state.darkTheme);
+
+    const locArray:String[] = location.pathname.split("/").filter(loc => loc!=="").map(loc => decodeURIComponent(loc))
+
+    const navigate:NavigateFunction = useNavigate()
 
     const handleItemClick = (category: string, item: MenuItem) => {
         if (item.subItems.length > 0) {
@@ -59,6 +66,8 @@ const LeftSidebar: FC<ComponentInterface> = ({ openBar }) => {
                 ...prev,
                 [`${category}-${item.name}`]: !prev[`${category}-${item.name}`]
             }));
+        } else {
+            navigate(`/${category}/${item.name}`)
         }
     };
 
@@ -90,7 +99,7 @@ const LeftSidebar: FC<ComponentInterface> = ({ openBar }) => {
                             {menuItems[category]?.map((item, index) => (
                                 <div key={index}>
                                     <div
-                                        className={`mt-1 flex gap-1 py-1 px-0 pr-2 items-center rounded-[8px] ${item.active && "bg-black05 dark:bg-white/5"}`}
+                                        className={`mt-1 flex gap-1 py-1 px-0 pr-2 items-center rounded-[8px] ${(locArray.includes(category) && locArray.includes(item.name) && item.subItems.length === 0) && "bg-black05 dark:bg-white/5"}`}
                                         onClick={() => handleItemClick(category, item)}
                                     >
                                         <div className="w-6 h-5">
@@ -100,23 +109,31 @@ const LeftSidebar: FC<ComponentInterface> = ({ openBar }) => {
                                                     alt=""
                                                 />
                                             )}
-                                            {item.active && <img src={darkTheme ? sidebar_dark_active : sidebar_active} alt="" />}
+                                            {(locArray.includes(category) && locArray.includes(item.name) && item.subItems.length === 0) && <img src={darkTheme ? sidebar_dark_active : sidebar_active} alt="" />}
                                         </div>
-                                        <img src={darkTheme ? item.darkIcon : item.icon} alt={`${item.name} Icon`} className="h-5 w-5" />
+                                         <img src={darkTheme ? item.darkIcon : item.icon} alt={`${item.name} Icon`} className="h-5 w-5" />
                                         <div className="text-black dark:text-white text-sm">{item.name}</div>
                                     </div>
                                     {expandedItems[`${category}-${item.name}`] && (
                                         <div className="ml-8">
-                                            {item.subItems.map((subItem, subIndex) => (
-                                                <div key={subIndex} className="py-1 px-0 pr-2 pl-5 items-center">
-                                                    <div className="text-black dark:text-white text-sm truncate w-full">{subItem.name}</div>
-                                                </div>
+                                            {item.subItems.map((subItem, index) => (
+                                                <Link to={`/${category}/${item.name}/${subItem.name}`} key={index} className="block" >
+                                                     <div
+                                                        className={`mt-1 flex gap-1 py-1 px-0 pr-2 items-center rounded-[8px] ${(locArray.includes(category) && locArray.includes(item.name) && locArray.includes(subItem.name)) && "bg-black05 dark:bg-white/5"}`}
+                                                        
+                                                    >
+                                                        <div className="w-6 h-5">
+                                                            {(locArray.includes(category) && locArray.includes(item.name) && locArray.includes(subItem.name)) && <img src={darkTheme ? sidebar_dark_active : sidebar_active} alt="" />}
+                                                        </div>
+                                                        <div className="text-black dark:text-white text-sm truncate w-full">{subItem.name}</div>
+                                                    </div>
+                                                </Link>
                                             ))}
                                         </div>
                                     )}
                                 </div>
                             ))}
-                        </div>
+                        </div> 
                     ))}
                 </div>
             </div>
