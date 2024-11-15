@@ -52,10 +52,20 @@ const Header: FC<ComponentInterface> = ({ setLeftSidebarOpen, leftSidebarOpen, s
         }
     }, [darkTheme]);
 
+    const openLeftSidebar = () => {
+        if(!leftSidebarOpen && window.screen.availWidth<1120) setRightSidebarOpen(false)
+        setLeftSidebarOpen(prevOpen => !prevOpen)
+    }
+    
+    const openRightSidebar = () => {
+        if(!rightSidebarOpen && window.screen.availWidth<1120) setLeftSidebarOpen(false)
+        setRightSidebarOpen(prevOpen => !prevOpen)
+    }
+
     return (
         <header className={`bg-white dark:bg-black text-sm border-b-[1px] border-black10 dark:border-white/10 py-4 px-4 md:px-6 fixed top-0 flex justify-between items-center ${rightSidebarOpen ? "right-72" : "right-0"} ${leftSidebarOpen ? "left-52" : "left-0"} transition-header z-50`}>
             <div className="flex flex-row gap-4 items-center">
-                <button onClick={() => setLeftSidebarOpen(prevOpen => !prevOpen)}>
+                <button onClick={() => openLeftSidebar()}>
                     <img 
                         src={darkTheme ? icon_dark_leftsidebar : icon_leftsidebar} 
                         alt="Left Sidebar" 
@@ -124,7 +134,7 @@ const Header: FC<ComponentInterface> = ({ setLeftSidebarOpen, leftSidebarOpen, s
                             className="h-7 w-7" 
                         />
                     </button>
-                    <button onClick={() => setRightSidebarOpen(prevOpen => !prevOpen)}>
+                    <button onClick={() => openRightSidebar()}>
                         <img 
                             src={darkTheme ? icon_dark_rightsidebar : icon_rightsidebar} 
                             alt="Right Sidebar" 

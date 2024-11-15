@@ -72,7 +72,7 @@ const LeftSidebar: FC<ComponentInterface> = ({ openBar, location }) => {
     };
 
     return (
-        <div className={`sidebar-transition ${openBar ? "w-52 open" : "w-0 hidden"} px-4 py-5 bg-white dark:bg-black z-50 border-black10 dark:border-white/10 border-r-[1px] transition-sidebar overflow-y-scroll h-[100vh] fixed left-0`}>
+        <div className={`sidebar-transition ${openBar ? "w-full sm:w-52 open" : "w-0 hidden"} px-4 py-5 bg-white dark:bg-black z-50 border-black10 dark:border-white/10 border-r-[1px] transition-sidebar overflow-y-scroll h-[100vh] fixed left-0`}>
             <div>
                 <div className="flex p-1 gap-2 rounded-sm items-center">
                     <img src={userAvatar} className="w-6 h-6" alt="User Avatar" />

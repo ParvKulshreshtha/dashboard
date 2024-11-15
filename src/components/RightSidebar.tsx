@@ -8,7 +8,7 @@ interface ComponentInterface {
 
 const RightSidebar: FC<ComponentInterface> = ({ rightSidebarOpen, setRightSidebarOpen }) => {
     return (
-        <div className={`sidebar-transition ${rightSidebarOpen ? "w-72 open" : "w-0 hidden"} px-6 py-5 border-l-[1px] border-black10 dark:border-white/10 z-50 bg-white dark:bg-black transition-sidebar overflow-y-auto h-[100vh] fixed right-0`}>
+        <div className={`sidebar-transition " ${rightSidebarOpen ? "w-full sm:w-72 open" : "w-0 hidden"} px-6 py-5 border-l-[1px] border-black10 dark:border-white/10 z-50 bg-white dark:bg-black transition-sidebar overflow-y-auto h-[100vh] fixed right-0`}>
             <button className="md:hidden p-2 text-black dark:text-white" onClick={() => setRightSidebarOpen(prev => !prev)}>
                 {rightSidebarOpen ? "Close" : "Open"}
             </button>
