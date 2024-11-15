@@ -36,6 +36,9 @@ const Header: FC<ComponentInterface> = ({ setLeftSidebarOpen, leftSidebarOpen, s
     const dispatch = useDispatch()
     const darkTheme = useSelector((state: any) => state.darkTheme);
 
+    const locArray:String[] = location.pathname.split("/").filter(loc => loc!=="").map(loc => decodeURIComponent(loc))
+
+
 
     const toggleTheme = () => {
         dispatch({type: "TOGGLE_DARK_THEME"})
@@ -72,14 +75,16 @@ const Header: FC<ComponentInterface> = ({ setLeftSidebarOpen, leftSidebarOpen, s
                 <div className="hidden md:flex">
                     <Breadcrumb>
                         <BreadcrumbList>
+                            {locArray?.map((loc,index) => 
                             <BreadcrumbItem>
+                                {index!==locArray.length-1?
                                 <BreadcrumbLink href="/">
-                                    <div className="text-black40 dark:text-white/40">Dashboard</div>
-                                </BreadcrumbLink>
-                            </BreadcrumbItem>
-                            <BreadcrumbSeparator>/</BreadcrumbSeparator>
+                                    <div className="text-black40 dark:text-white/40">{loc}</div>
+                                </BreadcrumbLink>:<BreadcrumbPage>{loc}</BreadcrumbPage>}
+                            {index!==locArray.length-1&&<BreadcrumbSeparator>/</BreadcrumbSeparator>}
+                            </BreadcrumbItem>)}
                             <BreadcrumbItem>
-                                <BreadcrumbPage>Default</BreadcrumbPage>
+                                
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
