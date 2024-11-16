@@ -25,14 +25,13 @@ interface ComponentInterface {
   currentPage: number;
 }
 
-export const OrderTable: FC<ComponentInterface> = ({  currentPage }) => {
+export const OrderTable: FC<ComponentInterface> = ({ currentPage }) => {
   const [selectedRows, setSelectedRows] = useState<{ [key: string]: boolean }>({});
   const [selectAll, setSelectAll] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<string>("");
 
   const darkTheme = useSelector((state: any) => state.darkTheme);
 
-  
   const ordersPerPage = 10;
   const paginatedOrders = orders.slice(
     (currentPage - 1) * ordersPerPage,
