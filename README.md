@@ -58,3 +58,15 @@ Ensure all dependencies are correctly installed. If you encounter issues, try de
 
 **built a temporary button on main screen that would lead us to orderlist component**
 
+
+**## Updates on 16/11/2024**
+
+**1. Responsive**
+Ensured the website is fully responsive across mobile, tablet, and laptop screens by leveraging Tailwind CSS. Utilized Tailwind's utility classes to create adaptive layouts, scalable images, and flexible typography, enhancing the user experience across various devices.
+
+**2. Sidebar Navigations Interactions**
+Implemented a left sidebar with interactive buttons that allow seamless navigation to respective routes.
+Similarly, in the right sidebar, we can navigate to notifications, activities, or contacts routes by clicking on the respective item. Most of these routes would currently show 
+
+**3. Dashboard and Orderlist Interactions**
+Added multiple interactive features to the Dashboard and Order List components. For example, clicking on cards in the Dashboard now navigates the user to the Order List table component. 
