@@ -15,7 +15,7 @@ const App: FC = () => {
   const location:Location = useLocation()
 
   const handleButtonClick = () => {
-    setElement(2);
+    setElement(prevElem=>prevElem===1?2:1);
   };
 
   return (
@@ -30,11 +30,11 @@ const App: FC = () => {
           <LeftSidebar openBar={leftSidebarOpen} location = {location} />
           <main className={`${(leftSidebarOpen || rightSidebarOpen) && "hidden"} sm:block flex-grow p-6 mt-24 main-transition ${(leftSidebarOpen && window.screen.availWidth>1120) ? 'ml-52' : 'ml-0'} ${(rightSidebarOpen && window.screen.availWidth>1120) ? 'mr-72' : 'mr-0'} w-[100vh] overflow-hidden`}>
             <button onClick={handleButtonClick} className="px-2">
-              (Click here To go to order page)
+              (Click here To go to {element===2?"Dashboard":"order"} page)
             </button>
             <Routes>
             <Route path="/" element={<Navigate to="/Dashboard/Default" replace/>} /> 
-              {element ===1 ?<Route path="/Dashboard/Default" element={<ECommDash />} /> : <Route path="/Dashboard/Default" element={<OrderList/>} />}
+              {element ===1 ?<Route path="/Dashboard/Default" element={<ECommDash  setElement={setElement}/>} /> : <Route path="/Dashboard/Default" element={<OrderList/>} />}
             <Route path="*" element={<div>No Page Found</div>} /> 
             </Routes>
           </main>

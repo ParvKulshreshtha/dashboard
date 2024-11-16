@@ -13,7 +13,7 @@ import Dot from "@/components/ui/Dot";
 import Map from "./Map";
 
 
-const ECommDash: FC= () => {
+const ECommDash: FC<{setElement:React.Dispatch<React.SetStateAction<number>>}> = ({setElement}) => {
 
   const darkTheme = useSelector((state: any) => state.darkTheme);
 
@@ -22,11 +22,11 @@ const ECommDash: FC= () => {
             <div className="font-semibold">eCommerce</div>
             <div className="grid grid-cols-12 gap-4 mt-4 dark:bg-black">
                 {/* First row */}
-                <div className="col-span-12 md:col-span-6 grid grid-cols-2 gap-4">
-                    <div className="dark:text-black">
+                <div className="col-span-12 md:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="dark:text-black ">
                         <div className="bg-primaryblue flex flex-col p-6 gap-2 rounded-[16px]">
                             <div className="font-semibold">Customers</div>
-                            <div className="flex justify-between items-center">
+                            <div className="flex justify-between items-center hover:flex-row-reverse cursor-pointer" onClick={()=>setElement(2)}>
                                 <div className="text-xl font-semibold">3,718</div>
                                 <div className="text-xs flex items-center">
                                     <span>+11.10%</span>
@@ -38,7 +38,7 @@ const ECommDash: FC= () => {
                     <div>
                         <div className="bg-primarylight dark:bg-white/5 flex flex-col p-6 gap-2 rounded-[16px]">
                             <div className="font-semibold">Orders</div>
-                            <div className="flex justify-between items-center">
+                            <div className="flex justify-between items-center hover:flex-row-reverse cursor-pointer" onClick={()=>setElement(2)}>
                                 <div className="text-xl font-semibold">1,219</div>
                                 <div className="text-xs flex items-center">
                                     <span>-0.03%</span>
@@ -50,7 +50,7 @@ const ECommDash: FC= () => {
                     <div>
                         <div className="bg-primarylight dark:bg-white/5 flex flex-col p-6 gap-2 rounded-[16px]">
                             <div className="font-semibold">Revenue</div>
-                            <div className="flex justify-between items-center">
+                            <div className="flex justify-between items-center hover:flex-row-reverse cursor-pointer" onClick={()=>setElement(2)}>
                                 <div className="text-xl font-semibold">$695</div>
                                 <div className="text-xs flex items-center">
                                     <span>+15.03%</span>
@@ -62,7 +62,7 @@ const ECommDash: FC= () => {
                     <div className="dark:text-black">
                         <div className="bg-primarypurple flex flex-col p-6 gap-2 rounded-[16px]">
                             <div className="font-semibold">Growth</div>
-                            <div className="flex justify-between items-center">
+                            <div className="flex justify-between items-center hover:flex-row-reverse cursor-pointer" onClick={()=>setElement(2)}>
                                 <div className="text-xl font-semibold">30.1%</div>
                                 <div className="text-xs flex items-center">
                                     <span>+6.08%</span>
@@ -131,7 +131,7 @@ const ECommDash: FC= () => {
                                         <Dot color={darkTheme ? mode.darkColor : mode.color} />
                                         <div className="truncate w-full">{mode.label}</div>
                                     </div>
-                                    <div className="col-span-4">{mode.value}</div>
+                                    <div className="col-span-4 text-end">{mode.value}</div>
                                 </div>
                             </div>
 
