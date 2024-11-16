@@ -27,7 +27,7 @@ const App: FC = () => {
           rightSidebarOpen={rightSidebarOpen}
         />
         <div className="flex flex-grow">
-          <LeftSidebar openBar={leftSidebarOpen} location = {location} />
+          <LeftSidebar openBar={leftSidebarOpen} location = {location} setLeftSidebarOpen={setLeftSidebarOpen} />
           <main className={`${(leftSidebarOpen || rightSidebarOpen) && "hidden"} sm:block flex-grow p-6 mt-24 main-transition ${(leftSidebarOpen && window.screen.availWidth>1120) ? 'ml-52' : 'ml-0'} ${(rightSidebarOpen && window.screen.availWidth>1120) ? 'mr-72' : 'mr-0'} w-[100vh] overflow-hidden`}>
             <button onClick={handleButtonClick} className="px-2">
               (Click here To go to {element===2?"Dashboard":"order"} page)

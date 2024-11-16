@@ -17,10 +17,12 @@ import icon_dark_openedArrow from "../assets/icon-dark-openedarrow.png";
 import Dot from "./ui/Dot";
 import { useSelector } from "react-redux";
 import { Link, Location, NavigateFunction, useNavigate } from "react-router-dom";
+import { IoMdClose } from "react-icons/io";
 
 interface ComponentInterface {
     openBar: boolean;
     location:Location;
+    setLeftSidebarOpen:React.Dispatch<React.SetStateAction<boolean>>; 
 }
 
 interface MenuItem {
@@ -52,7 +54,7 @@ const menuItems: MenuItems = {
     ]
 };
 
-const LeftSidebar: FC<ComponentInterface> = ({ openBar, location }) => {
+const LeftSidebar: FC<ComponentInterface> = ({ openBar, location, setLeftSidebarOpen }) => {
     const [expandedItems, setExpandedItems] = useState<{ [key: string]: boolean }>({});
     const darkTheme = useSelector((state: any) => state.darkTheme);
 
@@ -73,6 +75,9 @@ const LeftSidebar: FC<ComponentInterface> = ({ openBar, location }) => {
 
     return (
         <div className={`sidebar-transition ${openBar ? "w-full sm:w-52 open" : "w-0 hidden"} px-4 py-5 bg-white dark:bg-black z-50 border-black10 dark:border-white/10 border-r-[1px] transition-sidebar overflow-y-scroll h-[100vh] fixed left-0`}>
+            <button className="md:hidden p-2 text-black dark:text-white" onClick={() => setLeftSidebarOpen(prev => !prev)}>
+                <IoMdClose />
+            </button>
             <div>
                 <div className="flex p-1 gap-2 rounded-sm items-center">
                     <img src={userAvatar} className="w-6 h-6" alt="User Avatar" />
