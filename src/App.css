@@ -21,18 +21,7 @@
     transform: translateX(0);
 }
 
-/* The scrollbar itself */
+/* The scrollbar */
 ::-webkit-scrollbar {
-    width: 12px; /* Width of the vertical scrollbar */
-    height: 12px; /* Height of the horizontal scrollbar */
-}
-
-/* Track (the area the scrollbar slides within) */
-::-webkit-scrollbar-track {
-    border-radius: 10px; /* Round edges */
-}
-
-/* Handle (the draggable part of the scrollbar) */
-::-webkit-scrollbar-thumb {
-    border-radius: 10px; /* Round edges */
+    width: 0px; /* Width of the vertical scrollbar */
 }

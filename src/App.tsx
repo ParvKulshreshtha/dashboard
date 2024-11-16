@@ -28,7 +28,7 @@ const App: FC = () => {
         />
         <div className="flex flex-grow">
           <LeftSidebar openBar={leftSidebarOpen} location = {location} />
-          <main className={`${(leftSidebarOpen || rightSidebarOpen) && "hidden"} sm:block flex-grow p-6 mt-24 main-transition ${leftSidebarOpen ? 'ml-52' : 'ml-0'} ${rightSidebarOpen ? 'mr-72' : 'mr-0'}`}>
+          <main className={`${(leftSidebarOpen || rightSidebarOpen) && "hidden"} sm:block flex-grow p-6 mt-24 main-transition ${(leftSidebarOpen && window.screen.availWidth>1120) ? 'ml-52' : 'ml-0'} ${(rightSidebarOpen && window.screen.availWidth>1120) ? 'mr-72' : 'mr-0'}`}>
             <button onClick={handleButtonClick} className="px-2">
               (Click here To go to order page)
             </button>

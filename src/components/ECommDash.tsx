@@ -110,7 +110,7 @@ const ECommDash: FC= () => {
                 </div>
                 <div className="col-span-12 md:col-span-3 bg-primarylight dark:bg-white/5 rounded-[16px] p-6 flex flex-col justify-center">
                     <div className="font-semibold">Total Sales</div>
-                    <div>
+                    <div className=" max-w-52 lg:w-full justify-center self-center">
                         <DoughnutChart data={[
                             { label: "Direct", value: 300.56 },
                             { label: "Affiliate", value: 135.56 },
@@ -118,20 +118,23 @@ const ECommDash: FC= () => {
                             { label: "E-mail", value: 48.56 },
                         ]} />
                     </div>
-                    <div className="flex flex-col gap-3">
+                    <div className="flex flex-col gap-3 items-stretch justify-center">
                         {[
                             { label: "Direct", value: 300.56, color: "#1c1c1c", darkColor:"#C6C7F8" },
                             { label: "Affiliate", value: 135.56, color: "#95A4FC", darkColor:"#BAEDBD" },
                             { label: "Sponsored", value: 154.56, color: "#B1E3FF", darkColor:"#95A4FC" },
                             { label: "E-mail", value: 48.56, color: "#BAEDBD", darkColor:"#B1E3FF" },
                         ].map((mode, index) => (
-                            <div key={index} className="flex justify-between px-0.5 py-[1px]">
-                                <div className="flex items-center">
-                                    <Dot color={darkTheme?mode.darkColor:mode.color} />
-                                    <div>{mode.label}</div>
+                            <div key={index} className="py-[1px] px-0.5">
+                                <div className="grid grid-cols-12 justify-start">
+                                    <div className="col-span-8 flex">
+                                        <Dot color={darkTheme ? mode.darkColor : mode.color} />
+                                        <div className="truncate w-full">{mode.label}</div>
+                                    </div>
+                                    <div className="col-span-4">{mode.value}</div>
                                 </div>
-                                <div>{mode.value}</div>
                             </div>
+
                         ))}
                     </div>
                 </div>
